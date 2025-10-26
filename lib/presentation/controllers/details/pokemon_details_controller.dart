@@ -6,7 +6,7 @@ class PokemonDetailsController {
 
   final WidgetRef _ref;
   final String currentPokemonId;
-  late final Pokemon currentPokemon;
+  late final Pokemon? currentPokemon;
   late ProviderSubscription getPokemonByIdProviderSub;
 
   PokemonDetailsController(this._ref, {required this.currentPokemonId}){
@@ -14,10 +14,11 @@ class PokemonDetailsController {
   }
 
   void setPokemonByIdListener(){
-    getPokemonByIdProviderSub = _ref.listenManual(
+    getPokemonByIdProviderSub = _ref.listenManual<AsyncValue<Pokemon>>(
       getPokemonByIdProvider(currentPokemonId), 
       (prev, next){
-        currentPokemon = next;
+        if(next.isLoading) return;
+        currentPokemon = next.value;
       },
     );
   }

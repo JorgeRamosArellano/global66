@@ -34,7 +34,7 @@ La estructura y encarpetado del proyecto está basado en Clean Architecture, con
 
 - El paquete **Freezed** ha sido descartado para este proyecto por los siguientes motivos:
 
-    - Intentando seguir los principios del clean_architecture, al momento de crear un Entity en base a un Model, el paquete me no permite crear una función para esta funcionalidad.
+    - Intentando seguir los principios del clean_architecture, al momento de crear un Entity en base a un Model, el paquete me no permite crear un método para esta funcionalidad.
 
     - ![Error #1 freezed.dart](frezeed_error1.png)
 

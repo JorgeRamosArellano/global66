@@ -36,9 +36,9 @@ La estructura y encarpetado del proyecto está basado en Clean Architecture, con
 
     - Intentando seguir los principios del clean_architecture, al momento de crear un Entity en base a un Model, el paquete me no permite crear una función para esta funcionalidad.
 
-    - ![Error #1 freezed.dart]('frezeed_error1.png')
+    - ![Error #1 freezed.dart]('/frezeed_error1.png')
 
-    - ![Error #2 freezed.dart]('frezeed_error2.png')
+    - ![Error #2 freezed.dart]('/frezeed_error2.png')
 
     - Genera mucho boilerplate. En su lugar, recomiendo usar la extensión **Dart Data Class Generator**, más sencillo y con el mismo objetivo sin perder los fundamentos del lenguaje y reforzando los mismos.
 

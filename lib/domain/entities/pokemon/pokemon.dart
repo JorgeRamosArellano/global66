@@ -1,50 +1,58 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 /// Entidad/Modelo mapeo datos asociados al objeto pokemón
 class Pokemon {
+  final int id;
  final String name;
- final String url;
  final int height;
- int? index;
+ final int baseExperience;
+ final List<String> moves;
 
   Pokemon({
+    required this.id,
     required this.name,
-    required this.url,
     required this.height,
-    this.index,
+    required this.baseExperience,
+    required this.moves,
   });
 
 
   Pokemon copyWith({
+    int? id,
     String? name,
-    String? url,
     int? height,
-    int? index,
+    int? baseExperience,
+    List<String>? moves,
   }) {
     return Pokemon(
+      id: id ?? this.id,
       name: name ?? this.name,
-      url: url ?? this.url,
       height: height ?? this.height,
-      index: index ?? this.index,
+      baseExperience: baseExperience ?? this.baseExperience,
+      moves: moves ?? this.moves,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'id': id,
       'name': name,
-      'url': url,
       'height': height,
-      'index': index,
+      'baseExperience': baseExperience,
+      'moves': moves,
     };
   }
 
   factory Pokemon.fromMap(Map<String, dynamic> map) {
     return Pokemon(
+      id: map['id'] as int,
       name: map['name'] as String,
-      url: map['url'] as String,
       height: map['height'] as int,
-      index: int.tryParse(map['index']),
+      baseExperience: map['base_experience'] as int,
+      moves: List<String>.from((map['moves'] as List<String>)),
     );
   }
 
@@ -54,7 +62,7 @@ class Pokemon {
 
   @override
   String toString() {
-    return 'Pokemon(name: $name, url: $url, height: $height, index: $index)';
+    return 'Pokemon(id: $id, name: $name, height: $height, baseExperience: $baseExperience, moves: $moves)';
   }
 
   @override
@@ -62,17 +70,19 @@ class Pokemon {
     if (identical(this, other)) return true;
   
     return 
+      other.id == id &&
       other.name == name &&
-      other.url == url &&
       other.height == height &&
-      other.index == index;
+      other.baseExperience == baseExperience &&
+      listEquals(other.moves, moves);
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^
-      url.hashCode ^
+    return id.hashCode ^
+      name.hashCode ^
       height.hashCode ^
-      index.hashCode;
+      baseExperience.hashCode ^
+      moves.hashCode;
   }
 }

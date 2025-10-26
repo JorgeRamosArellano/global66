@@ -16,7 +16,7 @@ class _PokemonCardState extends State<PokemonCard> {
   Color getRandomColor(int index) {
   final random = Random(index); // usa el index como semilla
   return Color.fromARGB(
-    255,
+    100,
     random.nextInt(56) + 200,
     random.nextInt(56) + 200,
     random.nextInt(56) + 200,

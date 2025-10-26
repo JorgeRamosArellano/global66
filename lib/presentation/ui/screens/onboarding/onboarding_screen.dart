@@ -60,14 +60,16 @@ class OnBoardingLayout extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Spacer(flex: 4),
             Image.asset(image, width: size.width * 0.5),
             Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.width * 0.07), textAlign: TextAlign.center,),
             Text(description, textAlign: TextAlign.center),
-            SizedBox(height: size.height * 0.1),
+            Spacer(flex: 2),
             CustomButtom(
               label: labelBtn,
               onPressed: onPressed,
             ),
+            Spacer(flex: 1),
           ],
         ),
       ),

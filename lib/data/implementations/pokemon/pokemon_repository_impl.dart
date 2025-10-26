@@ -9,6 +9,22 @@ class PokemonRepositoryImpl extends PokemonRepository {
   PokemonRepositoryImpl({required this.service}); 
 
   @override
+  Future<List<Pokemon>?> getPokemonList() async {
+    final responseModels = await service.getPokemonList();
+    if(responseModels == null) return null;
+    final List<Pokemon> list = []; 
+  
+    for (final (index, model) in responseModels.results.indexed) {
+      final entity = model.toEntity();
+      entity.index = index;
+      list.add(entity);
+    }
+    
+    return list;
+  }
+
+  
+  @override
   Future<Pokemon?> getPokemonDetailById(String id) async{
     final modelsResponse = await service.getPokemonDetailById(id);
     if(modelsResponse == null) return null;
@@ -16,9 +32,4 @@ class PokemonRepositoryImpl extends PokemonRepository {
     return entity;
   }
 
-  @override
-  Future<List<Pokemon>> getPokemonList() {
-    // TODO: implement getPokemonList
-    throw UnimplementedError();
-  }
 }

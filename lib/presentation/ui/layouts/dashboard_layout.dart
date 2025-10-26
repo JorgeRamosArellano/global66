@@ -4,7 +4,7 @@ import 'package:test_jorge_ramos_globall66_flutter/presentation/controllers/layo
 import 'package:test_jorge_ramos_globall66_flutter/presentation/providers/layouts/dashboard_layout_provider.dart';
 
 class DashboardLayout extends ConsumerStatefulWidget {
-  static final route = '/';
+  static final route = '/dashboard';
   const DashboardLayout({super.key});
 
   @override

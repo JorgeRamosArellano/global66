@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:test_jorge_ramos_globall66_flutter/config/injection/pokemon_injection.dart';
 import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon.dart';
+import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon_result.dart';
 
 part 'pokemon_provider.g.dart';
 
@@ -8,9 +9,9 @@ part 'pokemon_provider.g.dart';
 class PokemonList extends _$PokemonList {
 
   @override
-  List<Pokemon>? build() => null;
+  List<PokemonResult>? build() => null;
 
-  set update(List<Pokemon>? list) => state = list;
+  set update(List<PokemonResult>? list) => state = list;
 
 
 }
@@ -18,7 +19,7 @@ class PokemonList extends _$PokemonList {
 
 
 @Riverpod(keepAlive: true)
-Future<List<Pokemon>?> getPokemonList(Ref ref) async{
+Future<List<PokemonResult>?> getPokemonList(Ref ref) async{
   final useCase = ref.read(pokemonUseCaseProvider);
   final response = await useCase.getPokemonList();
   ref.read(pokemonListProvider.notifier).update = response;

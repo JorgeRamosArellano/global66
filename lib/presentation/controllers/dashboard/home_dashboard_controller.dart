@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon.dart';
+import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon_result.dart';
 import 'package:test_jorge_ramos_globall66_flutter/presentation/providers/pokemon/pokemon_provider.dart';
 import 'package:test_jorge_ramos_globall66_flutter/presentation/ui/screens/details/pokemon_details_screen.dart';
 
@@ -8,7 +8,7 @@ class HomeDashboardController {
 
   final WidgetRef _ref;
   
-  List<Pokemon> pokemonList = [];
+  List<PokemonResult> pokemonList = [];
 
   HomeDashboardController(this._ref){
     setPokemonListListener();

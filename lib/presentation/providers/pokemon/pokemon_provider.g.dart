@@ -13,7 +13,7 @@ part of 'pokemon_provider.dart';
 const pokemonListProvider = PokemonListProvider._();
 
 final class PokemonListProvider
-    extends $NotifierProvider<PokemonList, List<Pokemon>?> {
+    extends $NotifierProvider<PokemonList, List<PokemonResult>?> {
   const PokemonListProvider._()
     : super(
         from: null,
@@ -33,28 +33,28 @@ final class PokemonListProvider
   PokemonList create() => PokemonList();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(List<Pokemon>? value) {
+  Override overrideWithValue(List<PokemonResult>? value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<List<Pokemon>?>(value),
+      providerOverride: $SyncValueProvider<List<PokemonResult>?>(value),
     );
   }
 }
 
-String _$pokemonListHash() => r'ab701366c357d52987a33bd9980873462dbc8b1d';
+String _$pokemonListHash() => r'fbf95da463bcc5c8662011fa071829987313e579';
 
-abstract class _$PokemonList extends $Notifier<List<Pokemon>?> {
-  List<Pokemon>? build();
+abstract class _$PokemonList extends $Notifier<List<PokemonResult>?> {
+  List<PokemonResult>? build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<List<Pokemon>?, List<Pokemon>?>;
+    final ref = this.ref as $Ref<List<PokemonResult>?, List<PokemonResult>?>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<List<Pokemon>?, List<Pokemon>?>,
-              List<Pokemon>?,
+              AnyNotifier<List<PokemonResult>?, List<PokemonResult>?>,
+              List<PokemonResult>?,
               Object?,
               Object?
             >;
@@ -68,11 +68,13 @@ const getPokemonListProvider = GetPokemonListProvider._();
 final class GetPokemonListProvider
     extends
         $FunctionalProvider<
-          AsyncValue<List<Pokemon>?>,
-          List<Pokemon>?,
-          FutureOr<List<Pokemon>?>
+          AsyncValue<List<PokemonResult>?>,
+          List<PokemonResult>?,
+          FutureOr<List<PokemonResult>?>
         >
-    with $FutureModifier<List<Pokemon>?>, $FutureProvider<List<Pokemon>?> {
+    with
+        $FutureModifier<List<PokemonResult>?>,
+        $FutureProvider<List<PokemonResult>?> {
   const GetPokemonListProvider._()
     : super(
         from: null,
@@ -89,17 +91,17 @@ final class GetPokemonListProvider
 
   @$internal
   @override
-  $FutureProviderElement<List<Pokemon>?> $createElement(
+  $FutureProviderElement<List<PokemonResult>?> $createElement(
     $ProviderPointer pointer,
   ) => $FutureProviderElement(pointer);
 
   @override
-  FutureOr<List<Pokemon>?> create(Ref ref) {
+  FutureOr<List<PokemonResult>?> create(Ref ref) {
     return getPokemonList(ref);
   }
 }
 
-String _$getPokemonListHash() => r'0c8c4b686db52c7c3e8886ed7a1911320dd864bb';
+String _$getPokemonListHash() => r'47546bf722c715b9984f672c7dcb0e4d298fb5d4';
 
 @ProviderFor(getPokemonById)
 const getPokemonByIdProvider = GetPokemonByIdFamily._();

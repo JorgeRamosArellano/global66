@@ -20,6 +20,13 @@ class _PokemonDetailsScreenState extends ConsumerState<PokemonDetailsScreen> {
     controller = PokemonDetailsController(ref, currentPokemonId: widget.pokemonId);
     super.initState();
   }
+
+  @override
+  void dispose() {
+    controller.closeListeners();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final asyncValuePokemonId = ref.watch(getPokemonByIdProvider(controller.currentPokemonId));

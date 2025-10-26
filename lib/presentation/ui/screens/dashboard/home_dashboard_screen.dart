@@ -45,7 +45,7 @@ class _HomeDashboardData extends StatelessWidget {
       itemCount: controller.pokemonList.length,
       itemBuilder: (context, index) {
         return PokemonCard(
-          pokemon: controller.pokemonList[index],
+          pokemonResult: controller.pokemonList[index],
           onTap: () => controller.onTapPokemonCard(index),
         );
       },

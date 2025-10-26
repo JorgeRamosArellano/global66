@@ -1,4 +1,5 @@
 import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon.dart';
+import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon_result.dart';
 import 'package:test_jorge_ramos_globall66_flutter/domain/repositories/pokemon/pokemon_repository.dart';
 
 /// Caso de uso para pokemones. Se le inyecta un repositorio que debe extender de PokemonRepository
@@ -8,7 +9,7 @@ class PokemonUseCase {
 
   PokemonUseCase({required this.repository});
 
-  Future<List<Pokemon>?> getPokemonList() async {
+  Future<List<PokemonResult>?> getPokemonList() async {
     return await repository.getPokemonList();
   }
 

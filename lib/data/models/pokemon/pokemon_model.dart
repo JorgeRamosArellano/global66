@@ -25,7 +25,7 @@ class PokemonModel {
     required this.forms,
   });
 
-  factory PokemonModel.fromJson(Map<String, dynamic> json) {
+  factory PokemonModel.fromMap(Map<String, dynamic> json) {
     return PokemonModel(
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
@@ -34,39 +34,39 @@ class PokemonModel {
       isDefault: json['is_default'] ?? true,
       cryUrl: json['cries']?['latest'] ?? '',
       encountersUrl: json['location_area_encounters'] ?? '',
-      abilities: (json['abilities'] as List<dynamic>?)
+      abilities:
+          (json['abilities'] as List<dynamic>?)
               ?.map((a) => a['ability']['name'] as String)
               .toList() ??
           [],
-      moves: (json['moves'] as List<dynamic>?)
+      moves:
+          (json['moves'] as List<dynamic>?)
               ?.map((m) => m['move']['name'] as String)
               .take(10)
               .toList() ??
           [],
-      forms: (json['forms'] as List<dynamic>?)
+      forms:
+          (json['forms'] as List<dynamic>?)
               ?.map((f) => f['name'] as String)
               .toList() ??
           [],
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'height': height,
-        'base_experience': baseExperience,
-        'is_default': isDefault,
-        'cry_url': cryUrl,
-        'encounters_url': encountersUrl,
-        'abilities': abilities,
-        'moves': moves,
-        'forms': forms,
-      };
-      
-  Pokemon toEntity(){
-    return Pokemon(name: name, url: encountersUrl);
+  Map<String, dynamic> toMap() => {
+    'id': id,
+    'name': name,
+    'height': height,
+    'base_experience': baseExperience,
+    'is_default': isDefault,
+    'cry_url': cryUrl,
+    'encounters_url': encountersUrl,
+    'abilities': abilities,
+    'moves': moves,
+    'forms': forms,
+  };
+
+  Pokemon toEntity() {
+    return Pokemon.fromMap(toMap());
   }
 }
-
-
-  

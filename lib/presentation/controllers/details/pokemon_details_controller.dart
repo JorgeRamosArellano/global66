@@ -5,18 +5,24 @@ class PokemonDetailsController {
 
   final WidgetRef _ref;
   final String currentPokemonId;
+  late ProviderSubscription getPokemonByIdProviderSub;
 
   PokemonDetailsController(this._ref, {required this.currentPokemonId}){
     setPokemonByIdListener();
   }
 
   void setPokemonByIdListener(){
-    _ref.listenManual(
+    getPokemonByIdProviderSub = _ref.listenManual(
       getPokemonByIdProvider(currentPokemonId), 
       (prev, next){
         print(next);
       },
     );
+  }
+
+
+  void closeListeners(){
+    getPokemonByIdProviderSub.close();
   }
 
 }

@@ -1,5 +1,3 @@
-import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon.dart';
-
 class PaginationPokemonModel {
   final int count;
   final String? next;
@@ -19,7 +17,7 @@ class PaginationPokemonModel {
       next: json['next'],
       previous: json['previous'],
       results: (json['results'] as List<dynamic>)
-          .map((e) => PokemonResultModel.fromJson(e))
+          .map((e) => PokemonResultModel.fromMap(e))
           .toList(),
     );
   }
@@ -29,7 +27,7 @@ class PaginationPokemonModel {
       'count': count,
       'next': next,
       'previous': previous,
-      'results': results.map((e) => e.toJson()).toList(),
+      'results': results.map((e) => e.toMap()).toList(),
     };
   }
 }
@@ -43,24 +41,17 @@ class PokemonResultModel {
     required this.url,
   });
 
-  factory PokemonResultModel.fromJson(Map<String, dynamic> json) {
+  factory PokemonResultModel.fromMap(Map<String, dynamic> json) {
     return PokemonResultModel(
       name: json['name'] ?? '',
       url: json['url'] ?? '',
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       'name': name,
       'url': url,
     };
-  }
-
-  Pokemon toEntity(){ 
-    return Pokemon(
-      name: name,
-      url: url,
-    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:test_jorge_ramos_globall66_flutter/data/services/http/pokemon/pokemon_api_service.dart';
 import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon.dart';
+import 'package:test_jorge_ramos_globall66_flutter/domain/entities/pokemon/pokemon_result.dart';
 import 'package:test_jorge_ramos_globall66_flutter/domain/repositories/pokemon/pokemon_repository.dart';
 
 class PokemonRepositoryImpl extends PokemonRepository {
@@ -9,13 +10,13 @@ class PokemonRepositoryImpl extends PokemonRepository {
   PokemonRepositoryImpl({required this.service}); 
 
   @override
-  Future<List<Pokemon>?> getPokemonList() async {
+  Future<List<PokemonResult>?> getPokemonList() async {
     final responseModels = await service.getPokemonList();
     if(responseModels == null) return null;
-    final List<Pokemon> list = []; 
+    final List<PokemonResult> list = []; 
   
     for (final (index, model) in responseModels.results.indexed) {
-      final entity = model.toEntity();
+      final entity = PokemonResult.fromMap(model.toMap());
       entity.index = index;
       list.add(entity);
     }

@@ -29,7 +29,7 @@ class PokemonApiService {
       final response = await _httpClient.get('/$id');
       if(response.statusCode != 200) throw Error();
       if (kDebugMode) print(response.data);
-      final model = PokemonModel.fromJson(response.data);
+      final model = PokemonModel.fromMap(response.data);
       return model;
     } catch (e) {
       return null;
